@@ -1,0 +1,19 @@
+version: '2'
+services: 
+  mariadb:
+    image: mariadb
+    container_name: mariadb
+    restart: always
+    volumes: 
+      - ./data/mysql:/var/lib/mysql
+    env_file: .env
+  webserver:
+    build: 
+      context: ./web
+    container_name: visualcube
+    links:
+      - mariadb:mariadb
+    env_file: .env
+    ports: 
+      - 80:80
+

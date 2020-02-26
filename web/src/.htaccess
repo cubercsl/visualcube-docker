@@ -1,0 +1,6 @@
+RewriteEngine On
+
+RewriteRule ^visualcube\.(svg|gif|png|jpg|jpeg|tiff|ico)$ https://%{HTTP_HOST}/visualcube.php?%{QUERY_STRING}&fmt=$1 [L]
+
+Options -Indexes
+
