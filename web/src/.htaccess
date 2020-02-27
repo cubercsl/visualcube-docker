@@ -5,4 +5,3 @@ RewriteCond %{REQUEST_FILENAME} !-f
 RewriteRule ^visualcube\.(svg|gif|png|jpg|jpeg|tiff|ico)$ visualcube.php?%{QUERY_STRING}&fmt=$1 [L]
 
 Options -Indexes
-

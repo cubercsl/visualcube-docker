@@ -15,4 +15,3 @@ ENV ENABLE_CACHE=1 \
     CACHE_IMG_SIZE_LIMIT=10000
 EXPOSE 80
 CMD [ "docker-entrypoint.sh" ]
-
