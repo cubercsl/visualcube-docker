@@ -77,7 +77,7 @@ write_config() {
         echo '$ENABLE_CACHE=false;' >> $CONFIG
     else
         echo "Enable cache."
-        #create_database
+        create_database
         echo '$ENABLE_CACHE=true;' >> $CONFIG
     fi
     (
