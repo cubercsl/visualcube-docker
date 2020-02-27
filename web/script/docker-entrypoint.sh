@@ -42,9 +42,9 @@ CONFIG="/var/www/html/cache_config.php"
 create_database() {
     (
     echo "CREATE DATABASE IF NOT EXISTS visualcube;"
-        echo "GRANT SELECT, INSERT, UPDATE, DELETE ON visualcube.* TO '$MYSQL_USER'@'localhost' IDENTIFIED BY '$MYSQL_PASSWORD';"
-        echo "FLUSH PRIVILEGES;"
-        ) | mysql -uroot -p${MYSQL_ROOT_PASSWORD} -h "$MYSQL_HOST"
+    echo "GRANT SELECT, INSERT, UPDATE, DELETE ON visualcube.* TO '$MYSQL_USER'@'localhost' IDENTIFIED BY '$MYSQL_PASSWORD';"
+    echo "FLUSH PRIVILEGES;"
+    ) | mysql -uroot -p${MYSQL_ROOT_PASSWORD}
 
     (
     cat << EOF
@@ -65,7 +65,7 @@ CREATE TABLE IF NOT EXISTS vcache(
 /** View contents with: */
 SELECT hash, fmt, req, rfr, rcount, OCTET_LENGTH(img) FROM vcache;
 EOF
-    ) | mysql -uroot -p${MYSQL_ROOT_PASSWORD} -h "$MYSQL_HOST"
+    ) | mysql -uroot -p${MYSQL_ROOT_PASSWORD}
 
     echo "Database and user(s) added."
 }
@@ -81,7 +81,7 @@ write_config() {
         echo '$ENABLE_CACHE=true;' >> $CONFIG
     fi
     (
-        cat << EOF
+    cat << EOF
 // Database Configuration (for image caching)
 \$DB_HOST="$MYSQL_HOST";
 \$DB_NAME="visualcube";
